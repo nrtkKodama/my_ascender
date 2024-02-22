@@ -2,13 +2,9 @@ version: "3.8"
 
 services:
   core:
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              capabilities: [gpu]
-              count: 1
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
     build:
       args:
         - BASE_IMAGE=nvidia/cuda:11.0.3-devel-ubuntu20.04
@@ -19,6 +15,6 @@ services:
       dockerfile: environments/Dockerfile
     tty: true
     volumes:
-        - ../../:/home/challenger/ascender
+        - ../../:/home/kodama/ascender
     ports:
         - 8000:8000

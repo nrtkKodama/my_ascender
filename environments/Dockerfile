@@ -2,7 +2,7 @@ ARG BASE_IMAGE=ubuntu:20.04
 FROM ${BASE_IMAGE}
 
 ARG PROJECT_NAME=ascender
-ARG USER_NAME=challenger
+ARG USER_NAME=kodama
 ARG GROUP_NAME=challengers
 ARG UID=1000
 ARG GID=1000
@@ -15,6 +15,8 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LANG="C.UTF-8" \
     PYTHONPATH=${APPLICATION_DIRECTORY}
 
+# setting time zone
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # Following is needed to install python 3.7
 RUN apt update && apt install --no-install-recommends -y software-properties-common 
 RUN add-apt-repository ppa:deadsnakes/ppa
