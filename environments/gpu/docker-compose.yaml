@@ -15,6 +15,6 @@ services:
       dockerfile: environments/Dockerfile
     tty: true
     volumes:
-        - ../../:/home/kodama/ascender
+        - ../../:/home/kodama/github_rep_name
     ports:
         - 8000:8000

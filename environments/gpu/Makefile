@@ -1,3 +1,3 @@
-.PHONY: build_image
+.PHONY: up_image
 build_image:
-	UID=$(id -u) GID=$(id -g) docker-compose up -d
+	docker-compose up --build-arg UID="`id -u`" --build-arg GID="`id -g`"
